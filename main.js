@@ -51,16 +51,16 @@ const createWindow = () => {
 app.whenReady().then(() => {
     createWindow()
 
-    const ret = globalShortcut.register('CommandOrControl+L', () => {
+    const ret = globalShortcut.register("CommandOrControl+;", () => {
         const text = clipboard.readText()
         let tempText
         for(let i = 0;i < text.length; i++){
             console.log(text[i])
-            tempText += (key[text[i]])
+            tempText += (engKey[text[i]])
         }
         console.log("Clipboard text:",text)
 
-        const translatedText = (tempText.split('d')[2])
+        const translatedText = (tempText?.split('d')[2])
         clipboard.writeText(translatedText)
       })
 
