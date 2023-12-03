@@ -1,18 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language-Convertor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon3.ico" type="image/x-icon">
+    <title>ממיר שפות</title>
 </head>
+<style>
+    body {
+        margin: 0px;
+        direction: rtl;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .background-image {
+        position: absolute;
+        height: 95vh;
+        width: 99.9vw;
+        background-image: url(./translate-6089103_1280.png);
+        background-position: center;
+        background-size: cover;
+        opacity: 0.3;
+    }
+
+    .report {
+        display: flex;
+        text-decoration: double;
+        align-items: center;
+        gap: 20px;
+
+        justify-content: center;
+    }
+
+    .main {
+        box-shadow: 1px 1px 10px 1px grey;
+        background-color: rgba(128, 128, 128, 0.24);
+        opacity: 1;
+        isolation: isolate;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 6px;
+        height: 95vh;
+    }
+    .try-it {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .try-it input {
+        padding:5px;
+    }
+    .try-it label {
+        background-color: crimson;
+        color:yellow;
+    }
+</style>
+
 <body>
-    <h1 id="hello">Hello world</h1>
-    <select id="cars" name="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="fiat">Fiat</option>
-        <option value="audi">Audi</option>
-      </select>
+    <div class="background-image"></div>
+    <div class="main">
+        <div>
+            <h1 style="text-align: center" id="hello">ברוכים הבאים לממיר שפות</h1>
+            <p>נכון להיום התוכנה בשלבי BETA ויתכנו בעיות</p>
+            <div class="report">
+                <p>במידה ומצאת בעיה אנא תשלחו מייל ל:</p>
+                <a href="mailto:evgenyber@technion.ac.il">evgenyber@technion.ac.il</a>
+            </div>
+            <p>
+                בכדי לבצע המרה יש
+                <span style="background-color:rgba(0, 0, 252, 0.459);"> לסמן את הטקסט שברצונכם להמיר </span>
+                <br>
+                להעתיק ctrl+c
+                <br>
+                לאחר העתקה יש ללחוץ ctrl+f לביצוע המרה
+                <br>
+                ופשוט ללחוץ ctrl+v להדבקת הטקסט הממור
+                <br>
+            <div class="try-it">
+                <label for="" >ניתן להנסות כאן</label>
+                <input type="text" value="gucs xccv">
+            </div>
+            <span style="color:yellow;background-color: crimson;">
+                האפליקציה רצה ברקע אין צורך להיות עם חלון האפליקציה פתוח
+                <br>
+                ניתן למזער את החלון ולעבוד רגיל
+            </span>
+            </p>
+
+        </div>
+        <div class="future-dewvelopment">
+            <h3>פיתוחים עתידיים</h3>
+            <p>להוסיף אפשרות לבחור את הקיצור להמרה</p>
+            <p>במידה וישנן הצעות לשיפור ניתן לשלוח מייל ל</p>
+            <a href="mailto:evgenyber@technion.ac.il">evgenyber@technion.ac.il</a>
+        </div>
+    </div>
     <script src="./renderer.js"></script>
 </body>
+
 </html>
