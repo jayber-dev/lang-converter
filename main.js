@@ -1,5 +1,6 @@
 const { app, BrowserWindow, clipboard, globalShortcut } = require('electron')
 const path = require('node:path')
+const os = require('node:os')
 const { engKeys } = require('./keys-layout/engKeys')
 const { hebKeys } = require('./keys-layout/hebKeys')
 
@@ -11,7 +12,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     },
-    icon: "./favicon.ico",
+    // icon: "./favicon.ico",
     backgroundColor: "smokewhite"
   })
 
@@ -21,10 +22,17 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   const win = createWindow()
-  
-  const ret = globalShortcut.register('CommandOrControl+f', () => {
-    win.setIcon("./favicon-processing.ico")
-    const text = clipboard.readText()
+  let text
+  const ret = globalShortcut.register('Alt+CommandOrControl+X', () => {
+
+    // win.setIcon("./favicon-processing.ico")
+    if(os.platform() === "win32"){
+        text = clipboard.readText()
+    }
+    if(os.platform() === "linux") {
+        text = clipboard.readText(type = "selection")
+        console.log(text)
+    }
     let tempText
     let langFlag = ""
     // console.log("rawText: ",text);
@@ -43,8 +51,10 @@ app.whenReady().then(() => {
       }
     }
 
+    console.log(ret)
+
     if (langFlag === "eng") {
-      win.icon = "./favicon3.ico"
+    //   win.icon = "./favicon3.ico"
       for (let i = 0; i < text.length; i++) {
         tempText += (engKeys[text[i]])
       }
@@ -67,7 +77,7 @@ app.whenReady().then(() => {
 
     const translatedText = (tempText?.split('d')[2])
     clipboard.writeText(translatedText)
-    win.setIcon("./favicon.ico")
+    // win.setIcon("./favicon.ico")
   })
 
   app.on('browser-window-blur', () => {
